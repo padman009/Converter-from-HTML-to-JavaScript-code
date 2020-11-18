@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Converter HTML to JS code</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <div style="margin: 10px;overflow-x: hidden;text-align: center;">
+        <header class="text-xl-center font-weight-bold" style="font-size: 70px;">Converter from HTML to JS</header>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="container">
+                    <label for="html_code" class="col-form-label">HTMl - Code:</label>
+                    <textarea class="form-control" id="html_code" rows="30"></textarea>
+                </div>
+            </div>
+            <div class="col-md-2 modal-dialog-centered mx-auto">
+                <div class="container">
+                    <button type="button" class="btn btn-block btn-lg btn-success" id="convertbtn">Convert</button>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="container">
+                    <label for="js_code" class="col-form-label">JS - Code:</label>
+                    <textarea class="form-control" id="js_code" rows="30"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src='script.js'></script>
+    <script src='parser.js'></script>
+    <script src='js_writer.js'></script>
+</body>
+</html>
