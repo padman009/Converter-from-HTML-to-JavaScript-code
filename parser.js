@@ -14,17 +14,17 @@ function parseFromString(html){
     let tag = html.slice(html.indexOf('<', cursor), html.indexOf(">", cursor) + 1).trim();
     cursor = html.indexOf(">", cursor) + 1;
     
-    let curr = new Teg(tag.slice(1, tag.indexOf(' ') + 1? tag.indexOf(' '):tag.length));
+    let curr = new Teg(tag.slice(1, tag.indexOf(' ') + 1? tag.indexOf(' '):tag.indexOf('>')).trim());
     if(tag.substring(tag.indexOf('>', cursor), tag.indexOf('<', cursor)).trim().length != 0){
         curr.text = tag.substring(tag.indexOf('>', cursor), tag.indexOf('<', cursor)).trim();
     }
-    curr.attributes = getAttrs(tag.slice(tag.indexOf(" ") + 1));
+    curr.attributes = getAttrs(tag.slice(tag.indexOf(' ') + 1? tag.indexOf(' '):tag.indexOf('>')).trim());
 
     map[curr.tag] = 0;
     stack.push(curr);
     
     // commented code for debugging
-    // let x=0;
+    let x=10;
     do {
         // console.log(x++);
         // console.log('cursor = '+cursor);
@@ -55,8 +55,8 @@ function parseFromString(html){
             // console.log(html.slice(cursor));
             cursor = html.indexOf(">", cursor) + 1;
             
-            curr = new Teg(tag.slice(1, tag.indexOf(' ') + 1? tag.indexOf(' '):tag.length));
-            curr.attributes = getAttrs(tag.slice(tag.indexOf(" ") + 1));
+            curr = new Teg(tag.slice(1, tag.indexOf(' ') + 1? tag.indexOf(' '):tag.indexOf('>')).trim());
+            curr.attributes = getAttrs(tag.slice(tag.indexOf(' ') + 1? tag.indexOf(' '):tag.indexOf('>')).trim());
             
             curr.text = html.substring(cursor, html.indexOf('</', cursor)).trim();
 
@@ -67,7 +67,7 @@ function parseFromString(html){
 
             stack.push(curr);
         }
-    } while (stack.length);
+    } while (stack.length && x--);
 
     // console.log(curr);  
 
@@ -75,6 +75,7 @@ function parseFromString(html){
 }
 
 function getAttrs(str) {
+    console.log(str);
     let attrs = [];
     let arr = str.split("=");
     let name = val = '';

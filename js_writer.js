@@ -12,9 +12,9 @@ function writeJS(main) {
 
             code += `let ${curr.name} = document.createElement('${curr.tag}');\n`;
             for(let x in curr.attributes){
-                code += (x == 'class' && curr.attributes[x].split(' ').length == 1)?`${curr.name}.classList.add('${curr.attributes[x]}');\n`: `${curr.name}.setAttribute('${x}', '${curr.attributes[x]}');\n`;
+                code += (x == 'class')?`${curr.name}.className = '${curr.attributes[x]}');\n`: `${curr.name}.setAttribute('${x}', '${curr.attributes[x]}');\n`;
             }
-            if(curr.text.length > 0){
+            if(curr.text.length){
                 code += `${curr.name}.innerText = '${curr.text}';\n`;
             }
 
